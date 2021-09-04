@@ -1,0 +1,70 @@
+/* 
+Unidades de Medida
+  1) Absolutas (Su valor no cambia, son unidades de mundo real)
+    pc, cm, mm, in, Q
+    pt (1/72 in)
+    px (1/96 in)
+  2) Relativas (Su valor es relativo a un contexto)
+    em, rem, ex, ch - al tamaño de la fuente
+      em - basada en la anchura de la 'm' de la fuente del elemento
+      rem - basada en la anchura de la 'm' de la fuente del elemento raiz (html)
+      ex - basada en la altura de la 'x' de la fuente del elemento
+      ch - basada en la anchura del '0' de la fuente del elemento.
+    % - al tamaño del contenedor
+    vw, vh, vmin, vmax - al tamaño del viewport
+      vw - ancho del viewport van del 1 al 100
+      vh - alto del viewport van del 1 al 100
+      vmax - entre vw y vh toma el que tenga mayor valor
+      vmin - entre vw y vh toma el que tenga menor valor
+
+    Conversiones entre unidades - http://pxtoem.com/
+*/
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
+.pixels {
+  background-color: cadetblue;
+  width: 500px;
+  height: 400px;
+  padding: 32px;
+  font-size: 16px;
+  border: thick solid rebeccapurple;
+}
+
+.ems {
+  background-color: cadetblue;
+  padding: 1em .5em;
+  font-size: 24px;
+  border: thick solid rebeccapurple;
+}
+
+.em-child {
+  background-color: salmon;
+  border: thick solid beige;
+  margin: 0.5em;
+  padding: 1em;
+  font-size: 2em;
+}
+
+.rems {
+  background-color: cadetblue;
+  padding: 1rem .5rem;
+  font-size: 24px;
+  border: thick solid rebeccapurple;
+}
+
+.rem-child {
+  background-color: salmon;
+  border: thick solid beige;
+  margin: .5rem;
+  padding: 1rem;
+  font-size: 2rem;
+}
