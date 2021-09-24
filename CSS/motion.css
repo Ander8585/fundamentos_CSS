@@ -116,4 +116,402 @@ box-shadow: 1rem 1rem 2rem .5rem black;
   transform: skew(20deg, 20deg);
   transform: skew(-5deg, -30deg);
   transform: skew(-5deg, -30deg);
+
+/* matrix(scaleX(), skewY(), skewX(), scaleY(), translateX(), translateY()) 
+   https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix()
+*/
+
+  transform: matrix(1,2,2,1,20,10);
+  transform: translate(25%, -50%) rotate(240deg) skew(10deg, 20deg) scale(-0.5, -0.5);
+}
+
+.transform-3d img {
+  transition: transform 2s ease-in-out ;
+}
+
+.transform-3d {
+  perspective: 60rem;
+}
+
+.transform-3d img:hover {
+  /* transform: perspective(10rem) translateZ(4rem);  se puede llamar la funcion perspective en la propiedad transform del elemento o activar la propiedad perspective en el elemento padre
+  */
+  transform: translateZ(4rem);
+  transform: translateZ(-4rem);
+  transform: translate3d(2rem, 50%,-3rem);
+  transform: scaleZ(1.5);
+  transform: scale3d(2, .5, 3);
+  transform: rotateX(80deg);
+  transform: rotateY(-440deg);
+  transform: rotate3d(1, 1, 1, 360deg);
+  transform: rotate3d(3, 2, 1, 2turn);
+  /* https://deeloper.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix3d() */
+  transform: matrix3d(1, 0, 0, 0, 0, 1, 6, 0, 0, 0, 1, 0, 50, 100, 0, 1.1);
+  transform: rotate3d(3, 1, 2, 2turn) translate3d(2rem, 5rem, -3rem) scale3d(0.5,0.5,1);
+}
+
+.transform-origin img {
+  transition: transform 2s ease-in-out;
+  /* transform-origin: x y z */
+  transform-origin: 50% 50% 0;
+  transform-origin: 0 0 0;
+  transform-origin: 0;
+  transform-origin: top left;
+  transform-origin: top center;
+  transform-origin: -2rem -3rem;
+  transform-origin: 2rem 75%;
+}
+
+.transform-origin img:hover {
+  transform: rotate(360deg)
+}
+
+.flip-card-1,
+.flip-card-2 {
+  border: thick solid black;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5rem;
+  width: 600px;
+  height: 400px;
+
+  position: relative;
+  cursor: pointer;
+  transition: transform 1s ease-in-out;
+  perspective: 50rem;
+  transform-style: flat;
+  transform-style: preserve-3d;
+}
+
+.flip-card-2 {
+  transform-origin : center right;
+}
+
+.flip-card-1:hover {
+  transform: rotateY(180deg);
+}
+
+.flip-card-1 img,
+.flip-card-2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0 50%;
+}
+
+.flip-card-2:hover {
+  transform: translateX(-100%) rotateY(-180deg);
+}
+
+.flip-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: visible;
+  backface-visibility: hidden;
+}
+
+.flip-front {
+  transform: rotateY(0deg);
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+@keyframes myAwesomeAnimation {
+  from {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  
+  to {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+}
+
+.my-animation {
+  /* animation: name duration timing-function delay iteration-count direction fill-mode play-state; */
+  animation-name: myAwesomeAnimation;
+  animation-duration: 3s;
+  animation-timing-function: cubic-bezier(1,0,0,1);
+  animation-timing-function: cubic-bezier(.33,.92,.92,.36);
+  animation-timing-function: ease-in-out;
+  animation-delay: 1500ms;
+  animation-delay: 0;
+  animation-iteration-count: 1;
+  /* animation-iteration-count: infinite; */
+  animation-direction: reverse;
+  animation-direction: alternate;
+  animation-direction: alternate-reverse;
+  animation-direction: normal;
+  animation-fill-mode: none;
+  /* fill mode: forwards Al final de la animacion se queda con los estilos finales de la animacion */
+  animation-fill-mode: forwards;
+  /* fill mode: backwards Al inicio de la animacion se queda con los estilos iniciales de la animacion */
+  animation-fill-mode: backwards;
+  /* fill mode: both Aplica al mismo tiempo fordwards y backwards */
+  animation-fill-mode: both;
+  animation-play-state: paused;
+  animation-play-state: running;
+  animation: myAwesomeAnimation 1.5s ease 250ms 6 alternate both running;
+
+}
+
+@keyframes myAwesomeAnimation2 {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  
+  50% {
+    opacity: 0.5;
+    transform: translateX(-50%);
+  }
+
+  75% {
+    transform: translateX(-75%);
+  }
+  
+  100% {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+}
+
+
+.my-animation-2 {
+  animation: myAwesomeAnimation2 2s;
+  animation: myAwesomeAnimation2 5s;
+}
+
+@keyframes multipleAnim-1 {
+  0% {
+    opacity: 1;
+  }
+  
+  50% {
+    opacity: 0;
+  }
+  
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes multipleAnim-2 {
+  0% {
+    transform: translateY(0);
+  }
+  
+  50% {
+    transform: translateY(-100%);
+  }
+  
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animation-multiple {
+  animation: multipleAnim-1 2s infinite,
+             multipleAnim-2 4s 3;
+}
+
+.motion-examples {
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  
+  100% {
+    opacity: 0;
+  }
+}
+
+.fade-in {
+  font-size: 5vw;
+  animation: fadeIn 2s linear infinite alternate both;
+}
+
+.fade-out {
+  font-size: 5vw;
+  animation: fadeOut 2s linear infinite alternate both;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate(-1px, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate(2px, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate(-4px, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate(4px, 0);
+  }
+}
+
+.shake {
+  font-size: 5vw;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.shake:hover {
+  animation: shake 1s cubic-bezier(.36, 0.07, .19, 0.97) both;
+  transform: translate(0, 0);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1.1);
+  }
+
+  50% {
+    transform: scale(.8);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  font-size: 4.5vw;
+  animation: pulse 1s linear infinite both;
+  margin-top: 3rem;
+}
+
+@keyframes heartColor {
+  10% {
+    background-color: #d00;
+  }
+
+
+}
+
+.heart {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10vw;
+  height: 10vw;
+  animation: pulse 1s infinite;
+}
+
+.heart::after,
+.heart::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  width: 5vw;
+  height: 8vw;
+  background-color: #a00;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+  border-radius: 5vw 5vw 0 0;
+  animation: heartColor 1s infinite;
+}
+
+.heart::after {
+  left:0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+@keyframes spinner {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.spinner {
+  /* background-color: #d00; */
+  width: 5vw;
+  height: 5vw;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+  border: .5vw solid rgba(0, 153, 255, 0.1);
+  border-left-color: rgb(0, 153, 255);
+  animation: spinner 1s linear infinite normal both;
+}
+
+.btn {
+  position: relative;
+  border: none;
+  border-radius: .25rem;
+  padding: .2rem;
+  width: 15rem;
+  height: 2.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0.25rem 0.25rem 0.7rem rgba(0, 0, 0, 0.2);
+}
+
+.anim-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: .10rem;
+  background-color: #d00;
+  transition: width .5s ease, left .5s ease, right .5s ease;
+}
+
+.anim-bottom:hover::after {
+  width: 100%;
+}
+
+.to-left::after {
+  left: 0;
+}
+
+.to-center::after {
+  left: 50%;
+}
+
+.to-center:hover::after {
+  left: 0;
+}
+
+.to-right::after {
+  right: 0;
+}
+
+.anim-bg-gradient {
+  background-image: linear-gradient(to right, pink, violet, orange, orangered);
+  background-size: 300% 100%;
+  transition: background-position 0.5s ease-in-out;
+}
+
+.anim-bg-gradient:hover {
+  background-position: 100% 0;
 }
